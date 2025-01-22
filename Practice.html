@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<head>
+    <script src="./angular.min.js"></script>
+    <script src="./App.js"></script>
+</head>
+
+<style>
+   .table {
+  border:solid ;
+  border: 1px solid gray;
+  width: calc(50% - 10px);
+  float: left;
+  margin: 5px;
+}
+</style>
+
+<h1>Module2 Assignment</h1>
+ <body ng-app="myapp" ng-controller="ToBuyListController as parent">
+    <div ng-app="myapp" ng-controller="AlreadyBoughtListController as child">
+   <table class="table"  >
+    <thead>
+        <tr><td colspan="2" style="background-color: maroon;color:white;">To Buy List</td></tr>
+    </thead>
+  
+   <tbody>
+       <tr ng-if ="parent.ToBuyList.length == 0" style="background-color:green;">
+        <td>Everything is bought! </td>
+    </tr>
+    <tr ng-repeat ="item in parent.ToBuyList">
+        <td>Buy {{item.quantity}} {{item.name}}</td>
+        <td><button  ng-click="parent.Buy($index);">Bought</button></td>
+    </tr>
+   </tbody>
+   </table>
+  
+   
+   <table class="table">
+    <thead>
+        <tr><td colspan="2" style="background-color: maroon;color:white;">Already Bought List</td></tr>
+    </thead>
+  
+   <tbody>
+    <tr ng-if ="child.AlreadyBoughtList.length == 0" style="background-color:yellow;">
+        <td>Nothing bought yet </td>
+    </tr>
+    <tr ng-repeat ="item in child.AlreadyBoughtList">
+        
+        <td>Bought {{item.quantity}} {{item.name}}</td>
+        
+    </tr>
+   </tbody>
+   </table>
+</div>
+      
+      
+</body>
+
+</html>
